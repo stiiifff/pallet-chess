@@ -47,28 +47,28 @@ impl<T: frame_system::Config> WeightInfo for SubstrateWeight<T> {
 	// Storage: Chess Matches (r:0 w:1)
 	// Storage: Chess MatchIdFromNonce (r:0 w:1)
 	fn create_match() -> Weight {
-		Weight::from_ref_time(59_450_000 as u64)
-			.saturating_add(T::DbWeight::get().reads(1 as u64))
-			.saturating_add(T::DbWeight::get().writes(3 as u64))
+		Weight::from_ref_time(59_450_000_u64)
+			.saturating_add(T::DbWeight::get().reads(1_u64))
+			.saturating_add(T::DbWeight::get().writes(3_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	// Storage: Chess MatchIdFromNonce (r:0 w:1)
 	fn abort_match() -> Weight {
-		Weight::from_ref_time(51_570_000 as u64)
-			.saturating_add(T::DbWeight::get().reads(1 as u64))
-			.saturating_add(T::DbWeight::get().writes(2 as u64))
+		Weight::from_ref_time(51_570_000_u64)
+			.saturating_add(T::DbWeight::get().reads(1_u64))
+			.saturating_add(T::DbWeight::get().writes(2_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	fn join_match() -> Weight {
-		Weight::from_ref_time(49_700_000 as u64)
-			.saturating_add(T::DbWeight::get().reads(1 as u64))
-			.saturating_add(T::DbWeight::get().writes(1 as u64))
+		Weight::from_ref_time(49_700_000_u64)
+			.saturating_add(T::DbWeight::get().reads(1_u64))
+			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	fn make_move() -> Weight {
-		Weight::from_ref_time(150_399_312 as u64)
-			.saturating_add(T::DbWeight::get().reads(1 as u64))
-			.saturating_add(T::DbWeight::get().writes(1 as u64))
+		Weight::from_ref_time(150_399_312_u64)
+			.saturating_add(T::DbWeight::get().reads(1_u64))
+			.saturating_add(T::DbWeight::get().writes(1_u64))
 	}
 }
 
@@ -77,27 +77,27 @@ impl WeightInfo for () {
 	// Storage: Chess Matches (r:0 w:1)
 	// Storage: Chess MatchIdFromNonce (r:0 w:1)
 	fn create_match() -> Weight {
-		Weight::from_ref_time(59_450_000 as u64)
-			.saturating_add(RocksDbWeight::get().reads(1 as u64))
-			.saturating_add(RocksDbWeight::get().writes(3 as u64))
+		Weight::from_ref_time(59_450_000_u64)
+			.saturating_add(RocksDbWeight::get().reads(1_u64))
+			.saturating_add(RocksDbWeight::get().writes(3_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	// Storage: Chess MatchIdFromNonce (r:0 w:1)
 	fn abort_match() -> Weight {
-		Weight::from_ref_time(51_570_000 as u64)
-			.saturating_add(RocksDbWeight::get().reads(1 as u64))
-			.saturating_add(RocksDbWeight::get().writes(2 as u64))
+		Weight::from_ref_time(51_570_000_u64)
+			.saturating_add(RocksDbWeight::get().reads(1_u64))
+			.saturating_add(RocksDbWeight::get().writes(2_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	fn join_match() -> Weight {
-		Weight::from_ref_time(49_700_000 as u64)
-			.saturating_add(RocksDbWeight::get().reads(1 as u64))
-			.saturating_add(RocksDbWeight::get().writes(1 as u64))
+		Weight::from_ref_time(49_700_000_u64)
+			.saturating_add(RocksDbWeight::get().reads(1_u64))
+			.saturating_add(RocksDbWeight::get().writes(1_u64))
 	}
 	// Storage: Chess Matches (r:1 w:1)
 	fn make_move() -> Weight {
-		Weight::from_ref_time(150_399_312 as u64)
-			.saturating_add(RocksDbWeight::get().reads(1 as u64))
-			.saturating_add(RocksDbWeight::get().writes(1 as u64))
+		Weight::from_ref_time(150_399_312_u64)
+			.saturating_add(RocksDbWeight::get().reads(1_u64))
+			.saturating_add(RocksDbWeight::get().writes(1_u64))
 	}
 }

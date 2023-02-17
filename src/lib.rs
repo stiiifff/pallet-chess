@@ -344,7 +344,7 @@ pub mod pallet {
 				opponent: opponent.clone(),
 				board: Self::init_board(),
 				state: MatchState::AwaitingOpponent,
-				nonce: nonce.clone(),
+				nonce,
 				style,
 				last_move: 0u32.into(),
 				start: 0u32.into(),
@@ -354,7 +354,7 @@ pub mod pallet {
 
 			new_match.challenger_bet()?;
 
-			let match_id = Self::match_id(challenger.clone(), opponent.clone(), nonce.clone());
+			let match_id = Self::match_id(challenger.clone(), opponent.clone(), nonce);
 			<Matches<T>>::insert(match_id, new_match);
 			<MatchIdFromNonce<T>>::insert(nonce, match_id);
 			Self::increment_nonce()?;
@@ -513,7 +513,7 @@ pub mod pallet {
 				let next = nonce.checked_add(1).ok_or(Error::<T>::NonceOverflow)?;
 				*nonce = next;
 
-				Ok(().into())
+				Ok(())
 			})
 		}
 
@@ -530,24 +530,18 @@ pub mod pallet {
 		}
 
 		fn decode_board(encoded_board: Vec<u8>) -> sp_std::result::Result<Board, Error<T>> {
-			let s = match from_utf8(encoded_board.as_slice()) {
-				Ok(s) => s,
-				Err(_) => "",
-			};
+			let s = from_utf8(encoded_board.as_slice()).unwrap_or("");
 			match Board::from_str(s) {
 				Ok(g) => Ok(g),
-				Err(_) => Err(Error::<T>::InvalidBoardEncoding.into()),
+				Err(_) => Err(Error::<T>::InvalidBoardEncoding),
 			}
 		}
 
 		fn decode_move(encoded_move: Vec<u8>) -> sp_std::result::Result<Move, Error<T>> {
-			let s = match from_utf8(encoded_move.as_slice()) {
-				Ok(s) => s,
-				Err(_) => "",
-			};
+			let s = from_utf8(encoded_move.as_slice()).unwrap_or("");
 			match Move::from_str(s) {
 				Ok(m) => Ok(m),
-				Err(_) => Err(Error::<T>::InvalidMoveEncoding.into()),
+				Err(_) => Err(Error::<T>::InvalidMoveEncoding),
 			}
 		}
 
@@ -559,7 +553,7 @@ pub mod pallet {
 		) -> sp_std::result::Result<(), Error<T>> {
 			let mut chess_match = match Self::chess_matches(match_id) {
 				Some(m) => m,
-				None => return Err(Error::<T>::NonExistentMatch.into()),
+				None => return Err(Error::<T>::NonExistentMatch),
 			};
 
 			chess_match.board = encoded_board.clone();
